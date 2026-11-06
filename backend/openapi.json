@@ -1,6 +1,191 @@
 {
   "components": {
     "schemas": {
+      "AnalysisResponse": {
+        "properties": {
+          "diagnosis": {
+            "$ref": "#/components/schemas/DiagnosisOut"
+          },
+          "kind": {
+            "enum": [
+              "python_traceback",
+              "generic_log",
+              "unknown"
+            ],
+            "title": "Kind",
+            "type": "string"
+          },
+          "redaction_count": {
+            "title": "Redaction Count",
+            "type": "integer"
+          },
+          "truncated": {
+            "title": "Truncated",
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "diagnosis",
+          "kind",
+          "truncated",
+          "redaction_count"
+        ],
+        "title": "AnalysisResponse",
+        "type": "object"
+      },
+      "AnalyzeRequest": {
+        "properties": {
+          "input": {
+            "title": "Input",
+            "type": "string"
+          }
+        },
+        "required": [
+          "input"
+        ],
+        "title": "AnalyzeRequest",
+        "type": "object"
+      },
+      "CulpritOut": {
+        "properties": {
+          "file": {
+            "title": "File",
+            "type": "string"
+          },
+          "func": {
+            "title": "Func",
+            "type": "string"
+          },
+          "line": {
+            "title": "Line",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "file",
+          "line",
+          "func"
+        ],
+        "title": "CulpritOut",
+        "type": "object"
+      },
+      "DiagnosisOut": {
+        "properties": {
+          "alternative_causes": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Alternative Causes",
+            "type": "array"
+          },
+          "confidence": {
+            "enum": [
+              "high",
+              "medium",
+              "low"
+            ],
+            "title": "Confidence",
+            "type": "string"
+          },
+          "culprit": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/CulpritOut"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "explanation": {
+            "title": "Explanation",
+            "type": "string"
+          },
+          "fix": {
+            "$ref": "#/components/schemas/FixOut"
+          },
+          "follow_up_checks": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Follow Up Checks",
+            "type": "array"
+          },
+          "likely_cause": {
+            "title": "Likely Cause",
+            "type": "string"
+          },
+          "summary": {
+            "title": "Summary",
+            "type": "string"
+          }
+        },
+        "required": [
+          "summary",
+          "likely_cause",
+          "confidence",
+          "explanation",
+          "culprit",
+          "fix",
+          "alternative_causes",
+          "follow_up_checks"
+        ],
+        "title": "DiagnosisOut",
+        "type": "object"
+      },
+      "ErrorResponse": {
+        "properties": {
+          "error": {
+            "title": "Error",
+            "type": "string"
+          }
+        },
+        "required": [
+          "error"
+        ],
+        "title": "ErrorResponse",
+        "type": "object"
+      },
+      "FixOut": {
+        "properties": {
+          "code_snippet": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Code Snippet"
+          },
+          "language": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Language"
+          },
+          "steps": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Steps",
+            "type": "array"
+          }
+        },
+        "required": [
+          "steps",
+          "code_snippet",
+          "language"
+        ],
+        "title": "FixOut",
+        "type": "object"
+      },
       "HealthResponse": {
         "properties": {
           "status": {
@@ -22,6 +207,74 @@
   },
   "openapi": "3.1.0",
   "paths": {
+    "/api/analyze": {
+      "post": {
+        "operationId": "analyze_endpoint_api_analyze_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AnalyzeRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AnalysisResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Empty input or invalid request"
+          },
+          "413": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Input too large"
+          },
+          "429": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Rate limit exceeded"
+          },
+          "502": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Analysis failed"
+          }
+        },
+        "summary": "Analyze Endpoint"
+      }
+    },
     "/healthz": {
       "get": {
         "operationId": "healthz_healthz_get",
