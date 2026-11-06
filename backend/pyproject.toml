@@ -1,0 +1,104 @@
+[project]
+name = "log-whisperer"
+version = "0.1.0"
+description = "Explains a Python traceback or log: likely cause, culprit line and fix."
+requires-python = ">=3.12,<3.13"
+dependencies = [
+    "anthropic>=2.6,<3",
+    "fastapi>=0.162,<1",
+    "uvicorn>=0.54,<1",
+]
+
+[dependency-groups]
+dev = [
+    "httpx>=0.28,<1",
+    "hypothesis>=6.170,<7",
+    "import-linter>=2.16,<3",
+    "mypy>=2.4,<3",
+    "pytest>=9.2,<10",
+    "pytest-cov>=7.1,<8",
+    "ruff>=0.17,<0.18",
+]
+fixtures = [
+    "requests>=2.34,<3",
+    "sqlalchemy>=2.0,<2.1",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/log_whisperer"]
+
+[tool.uv]
+default-groups = ["dev"]
+exclude-newer = "2026-11-06T18:00:00Z"
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+src = ["src", "tests", "scripts"]
+extend-exclude = ["fixtures_src"]
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "B", "UP", "SIM", "RUF", "S", "PT"]
+ignore = ["S101"]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/**" = ["S", "PT011"]
+"scripts/**" = ["S603", "S607"]
+
+[tool.mypy]
+strict = true
+python_version = "3.12"
+mypy_path = "src"
+files = ["src", "tests", "scripts"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q --strict-markers"
+
+[tool.coverage.run]
+branch = true
+source = ["log_whisperer"]
+
+[tool.coverage.report]
+show_missing = true
+skip_covered = true
+fail_under = 90
+
+[tool.importlinter]
+root_package = "log_whisperer"
+include_external_packages = true
+
+[[tool.importlinter.contracts]]
+name = "Layers: bootstrap > adapters > application > domain"
+type = "layers"
+layers = [
+    "log_whisperer.bootstrap",
+    "log_whisperer.adapters",
+    "log_whisperer.application",
+    "log_whisperer.domain",
+]
+
+[[tool.importlinter.contracts]]
+name = "Domain is pure"
+type = "forbidden"
+source_modules = ["log_whisperer.domain"]
+forbidden_modules = [
+    "fastapi",
+    "pydantic",
+    "anthropic",
+    "httpx",
+    "starlette",
+    "log_whisperer.application",
+    "log_whisperer.adapters",
+    "log_whisperer.bootstrap",
+]
+
+[[tool.importlinter.contracts]]
+name = "Application is framework-free"
+type = "forbidden"
+source_modules = ["log_whisperer.application"]
+forbidden_modules = ["fastapi", "anthropic", "pydantic"]
