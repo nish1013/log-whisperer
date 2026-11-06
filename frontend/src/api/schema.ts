@@ -4,6 +4,23 @@
  */
 
 export interface paths {
+    "/api/analyze": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** Analyze Endpoint */
+        post: operations["analyze_endpoint_api_analyze_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/healthz": {
         parameters: {
             query?: never;
@@ -25,6 +42,67 @@ export interface paths {
 export type webhooks = Record<string, never>;
 export interface components {
     schemas: {
+        /** AnalysisResponse */
+        AnalysisResponse: {
+            diagnosis: components["schemas"]["DiagnosisOut"];
+            /**
+             * Kind
+             * @enum {string}
+             */
+            kind: "python_traceback" | "generic_log" | "unknown";
+            /** Redaction Count */
+            redaction_count: number;
+            /** Truncated */
+            truncated: boolean;
+        };
+        /** AnalyzeRequest */
+        AnalyzeRequest: {
+            /** Input */
+            input: string;
+        };
+        /** CulpritOut */
+        CulpritOut: {
+            /** File */
+            file: string;
+            /** Func */
+            func: string;
+            /** Line */
+            line: number;
+        };
+        /** DiagnosisOut */
+        DiagnosisOut: {
+            /** Alternative Causes */
+            alternative_causes: string[];
+            /**
+             * Confidence
+             * @enum {string}
+             */
+            confidence: "high" | "medium" | "low";
+            culprit: components["schemas"]["CulpritOut"] | null;
+            /** Explanation */
+            explanation: string;
+            fix: components["schemas"]["FixOut"];
+            /** Follow Up Checks */
+            follow_up_checks: string[];
+            /** Likely Cause */
+            likely_cause: string;
+            /** Summary */
+            summary: string;
+        };
+        /** ErrorResponse */
+        ErrorResponse: {
+            /** Error */
+            error: string;
+        };
+        /** FixOut */
+        FixOut: {
+            /** Code Snippet */
+            code_snippet: string | null;
+            /** Language */
+            language: string | null;
+            /** Steps */
+            steps: string[];
+        };
         /** HealthResponse */
         HealthResponse: {
             /** Status */
@@ -39,6 +117,66 @@ export interface components {
 }
 export type $defs = Record<string, never>;
 export interface operations {
+    analyze_endpoint_api_analyze_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["AnalyzeRequest"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["AnalysisResponse"];
+                };
+            };
+            /** @description Empty input or invalid request */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Input too large */
+            413: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Rate limit exceeded */
+            429: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            /** @description Analysis failed */
+            502: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+        };
+    };
     healthz_healthz_get: {
         parameters: {
             query?: never;
