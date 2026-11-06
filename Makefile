@@ -8,7 +8,7 @@ E2E_ENV := LLM_PROVIDER=fake RATE_LIMIT_PER_MINUTE=600
 .PHONY: install up down lint test fixtures check-api eval e2e screenshots
 
 install:
-	$(BACKEND) uv sync
+	$(BACKEND) uv sync --locked
 	$(FRONTEND) pnpm install --frozen-lockfile
 
 up:
