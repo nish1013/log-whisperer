@@ -102,3 +102,19 @@ def test_ungrounded_paths_lists_invented_paths() -> None:
         culprit=CulpritRef("app/x.py", 1, "f"),
     )
     assert ungrounded_paths(diagnosis, F01) == ["app/fake/nowhere.py", "app/x.py"]
+
+
+def test_sentence_with_invented_absolute_path_is_dropped() -> None:
+    result = enforce(
+        _diagnosis(explanation="The key is absent. The loader in /opt/app/loader.py drops it."),
+        F01,
+        "python_traceback",
+    )
+    assert result.diagnosis.explanation == "The key is absent."
+    assert result.stripped == 1
+
+
+def test_absolute_path_from_the_log_is_kept() -> None:
+    explanation = "/srv/app/services/user.py reads the key."
+    result = enforce(_diagnosis(explanation=explanation), F01, "python_traceback")
+    assert result.diagnosis.explanation == explanation

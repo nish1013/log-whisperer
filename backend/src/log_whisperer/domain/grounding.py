@@ -15,7 +15,7 @@ from log_whisperer.domain.model import (
 FALLBACK_STEP = "Review the frames shown in the traceback before changing code."
 
 _PATH = re.compile(
-    r"(?<![\w/.\-])(?:[\w.\-]+/)+[\w\-]+\.[A-Za-z]{1,8}\b|(?<![\w/.\-])[\w\-]+\.py\b"
+    r"(?<![\w/.\-])/?(?:[\w.\-]+/)+[\w\-]+\.[A-Za-z]{1,8}\b|(?<![\w/.\-])[\w\-]+\.py\b"
 )
 _SENTENCE_END = re.compile(r"(?<=[.!?])\s+")
 
