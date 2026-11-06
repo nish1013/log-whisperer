@@ -4,13 +4,13 @@ import react from "@vitejs/plugin-react";
 import { defineConfig } from "vitest/config";
 
 const apiTarget = process.env.API_PROXY_TARGET ?? "http://localhost:8000";
-const fixturesDir = path.resolve(__dirname, "../backend/tests/fixtures");
+const fixturesDir = path.resolve(import.meta.dirname, "../backend/tests/fixtures");
 
 export default defineConfig({
   plugins: [react(), tailwindcss()],
-  resolve: { alias: { "@": path.resolve(__dirname, "src") } },
+  resolve: { alias: { "@": path.resolve(import.meta.dirname, "src") } },
   optimizeDeps: {
-    include: ["shiki/core", "shiki/engine/javascript", "shiki/langs"],
+    include: ["shiki/core", "shiki/engine/javascript", "shiki/langs", "shiki/themes"],
   },
   server: {
     host: "0.0.0.0",
@@ -31,7 +31,7 @@ export default defineConfig({
     coverage: {
       provider: "v8",
       include: ["src/features/analyze/**"],
-      exclude: ["src/**/*.test.{ts,tsx}"],
+      exclude: ["src/**/*.test.{ts,tsx}", "src/**/testData.ts"],
       thresholds: { lines: 80, branches: 80, functions: 80, statements: 80 },
     },
   },
