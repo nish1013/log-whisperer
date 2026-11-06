@@ -5,7 +5,7 @@ BACKEND := cd backend &&
 FRONTEND := cd frontend &&
 E2E_ENV := LLM_PROVIDER=fake RATE_LIMIT_PER_MINUTE=600
 
-.PHONY: install up down lint test fixtures check-api eval e2e
+.PHONY: install up down lint test fixtures check-api eval e2e screenshots
 
 install:
 	$(BACKEND) uv sync
@@ -43,4 +43,9 @@ eval:
 e2e:
 	$(E2E_ENV) docker compose up -d --build --wait
 	$(FRONTEND) pnpm e2e || { mkdir -p frontend/test-results; docker compose logs --no-color > frontend/test-results/compose.log 2>&1 || true; docker compose down; exit 1; }
+	docker compose down
+
+screenshots:
+	$(E2E_ENV) docker compose up -d --build --wait
+	$(FRONTEND) README_SCREENSHOTS=1 pnpm exec playwright test e2e/readme-screenshots.spec.ts || { docker compose down; exit 1; }
 	docker compose down

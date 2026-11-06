@@ -2,6 +2,14 @@
 
 Paste a Python traceback or log. log-whisperer finds the likely cause, the culprit line and a fix.
 
+## Screenshots
+
+The images show the F01 example with the fake provider. `make screenshots` refreshes them.
+
+| Desktop, 1440 × 900 | Phone, 412px wide |
+|---|---|
+| ![Analysis of a KeyError on desktop](docs/screenshots/desktop.png) | ![Analysis of a KeyError on a phone](docs/screenshots/phone.png) |
+
 ## Quick start
 
 Needs Docker with Compose v2.
@@ -71,6 +79,7 @@ bootstrap ──► adapters ──► application ──► domain
 | `make fixtures` | Runs `backend/fixtures_src` under Python 3.10 to 3.13 and rewrites the fixtures. Needs uv 0.13.7 or later. |
 | `uv run python scripts/perf_check.py` | Prints redactor and parser timings on adversarial input. Run it from `backend/`. It does not run in CI. |
 | `make e2e` | Starts Compose with the fake provider and runs Playwright. |
+| `make screenshots` | Starts Compose with the fake provider and rewrites `docs/screenshots/`. |
 | `make eval` | Runs every fixture twice through the real model and prints a check table. Needs `ANTHROPIC_API_KEY`. It does not run in CI. |
 
 ## Conventions
@@ -81,7 +90,8 @@ bootstrap ──► adapters ──► application ──► domain
 - No committed file holds a key-shaped string. `F11_secrets.txt` uses `{{secret:N}}`, and `expected.json` holds each secret in parts.
 - Set `PW_CHROMIUM_PATH` to use a local Chromium for Playwright.
 - The example picker bundles copies of F01, F04 and F10. A unit test fails when a copy differs from the backend fixture.
-- `make e2e` saves screenshots at 1440px and 375px and a video of the F01 flow. CI uploads them in `playwright-report`.
+- `make e2e` saves screenshots at 1440px, 375px and on an emulated Pixel 7, and a video of the F01 flow. CI uploads them in `playwright-report`.
+- On a phone, the input uses 16px text, so the browser does not zoom on focus. Buttons and the example picker are at least 44px high.
 
 ## Limits
 
