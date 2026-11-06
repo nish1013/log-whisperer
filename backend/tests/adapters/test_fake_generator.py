@@ -50,3 +50,15 @@ def test_traceback_without_user_frames_is_medium_without_culprit() -> None:
     diagnosis = _generate(text)
     assert diagnosis.culprit is None
     assert diagnosis.confidence is Confidence.MEDIUM
+
+
+@pytest.mark.parametrize(
+    ("text", "summary"),
+    [
+        ("ERROR boom", "No Python traceback found; 1 ERROR line."),
+        ("ERROR a\nERROR b", "No Python traceback found; 2 ERROR lines."),
+        ("hello", "No Python traceback found."),
+    ],
+)
+def test_no_traceback_summary_counts_error_lines(text: str, summary: str) -> None:
+    assert _generate(text).summary == summary
