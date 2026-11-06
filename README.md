@@ -80,6 +80,8 @@ bootstrap ──► adapters ──► application ──► domain
 - Traceback fixtures come from real runs. Never edit a generated fixture; run `make fixtures`.
 - No committed file holds a key-shaped string. `F11_secrets.txt` uses `{{secret:N}}`, and `expected.json` holds each secret in parts.
 - Set `PW_CHROMIUM_PATH` to use a local Chromium for Playwright.
+- The example picker bundles copies of F01, F04 and F10. A unit test fails when a copy differs from the backend fixture.
+- `make e2e` saves screenshots at 1440px and 375px and a video of the F01 flow. CI uploads them in `playwright-report`.
 
 ## Limits
 
