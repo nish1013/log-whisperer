@@ -30,7 +30,7 @@ test:
 	$(FRONTEND) pnpm test
 
 fixtures:
-	$(BACKEND) uv run --group fixtures python scripts/generate_fixtures.py
+	$(BACKEND) uv run python scripts/generate_fixtures.py
 
 check-api:
 	$(BACKEND) uv run python scripts/export_openapi.py openapi.json

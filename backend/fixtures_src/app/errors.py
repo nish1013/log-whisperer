@@ -1,0 +1,2 @@
+class UpstreamUnavailable(Exception):
+    pass

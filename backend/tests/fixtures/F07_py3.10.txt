@@ -1,0 +1,36 @@
+Traceback (most recent call last):
+  File "/venv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 2000, in _exec_single_context
+    self.dialect.do_execute(
+  File "/venv/lib/python3.10/site-packages/sqlalchemy/engine/default.py", line 964, in do_execute
+    cursor.execute(statement, parameters)
+sqlite3.IntegrityError: UNIQUE constraint failed: users.username
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/srv/run.py", line 75, in <module>
+    SCENARIOS[sys.argv[1]]()
+  File "/srv/app/db/repo.py", line 21, in register_twice
+    create_user(conn, "ana")
+  File "/srv/app/db/repo.py", line 13, in create_user
+    conn.execute(insert(users).values(username=username))
+  File "/venv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1464, in execute
+    return meth(
+  File "/venv/lib/python3.10/site-packages/sqlalchemy/sql/elements.py", line 526, in _execute_on_connection
+    return connection._execute_clauseelement(
+  File "/venv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1686, in _execute_clauseelement
+    ret = self._execute_context(
+  File "/venv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1891, in _execute_context
+    return self._exec_single_context(
+  File "/venv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 2019, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/venv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 2381, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/venv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 2000, in _exec_single_context
+    self.dialect.do_execute(
+  File "/venv/lib/python3.10/site-packages/sqlalchemy/engine/default.py", line 964, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.IntegrityError: (sqlite3.IntegrityError) UNIQUE constraint failed: users.username
+[SQL: INSERT INTO users (username) VALUES (?)]
+[parameters: ('ana',)]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
