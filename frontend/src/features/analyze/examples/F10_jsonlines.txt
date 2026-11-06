@@ -1,0 +1,6 @@
+{"ts": "2026-11-05T10:00:00Z", "level": "INFO", "logger": "app.worker", "msg": "worker started", "queue": "reports"}
+{"ts": "2026-11-05T10:00:02Z", "level": "WARNING", "logger": "app.worker", "msg": "job slow", "job_id": 812, "elapsed_ms": 4120}
+{"ts": "2026-11-05T10:00:03Z", "level": "ERROR", "logger": "app.worker", "msg": "job failed", "job_id": 812, "reason": "upstream returned 503"}
+{"ts": "2026-11-05T10:00:05Z", "level": "ERROR", "logger": "app.worker", "msg": "job failed", "job_id": 813, "reason": "upstream returned 503"}
+{"ts": "2026-11-05T10:00:06Z", "level": "INFO", "logger": "app.worker", "msg": "circuit breaker open", "service": "billing"}
+{"ts": "2026-11-05T10:00:09Z", "level": "ERROR", "logger": "app.worker", "msg": "job failed", "job_id": 814, "reason": "circuit breaker open"}
