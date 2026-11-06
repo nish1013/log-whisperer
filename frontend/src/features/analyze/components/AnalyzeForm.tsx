@@ -63,7 +63,7 @@ export function AnalyzeForm({ value, pending, onChange, onSubmit }: Props) {
         value={value}
         onChange={(event) => onChange(event.target.value)}
         onKeyDown={onKeyDown}
-        className="min-h-[18rem] resize-y overflow-auto font-mono text-xs whitespace-pre"
+        className="min-h-[18rem] resize-y overflow-auto font-mono text-base whitespace-pre sm:text-xs"
       />
       <div className="flex items-center justify-between gap-2">
         <span
