@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "/srv/run.py", line 75, in <module>
+    SCENARIOS[sys.argv[1]]()
+  File "/srv/app/services/user.py", line 6, in show_profile
+    return get_profile({"id": 7, "name": "Ana"})
+  File "/srv/app/services/user.py", line 2, in get_profile
+    return {"name": user["name"], "email": user["email"]}
+KeyError: 'email'

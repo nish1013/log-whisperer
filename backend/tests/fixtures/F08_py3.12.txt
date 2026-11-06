@@ -1,0 +1,10 @@
+2026-11-05 10:00:01,123 ERROR app.worker - Traceback (most recent call last):
+2026-11-05 10:00:01,123 ERROR app.worker -   File "/srv/run.py", line 75, in <module>
+2026-11-05 10:00:01,123 ERROR app.worker -     SCENARIOS[sys.argv[1]]()
+2026-11-05 10:00:01,123 ERROR app.worker -   File "/srv/app/services/user.py", line 6, in show_profile
+2026-11-05 10:00:01,123 ERROR app.worker -     return get_profile({"id": 7, "name": "Ana"})
+2026-11-05 10:00:01,123 ERROR app.worker -            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-11-05 10:00:01,123 ERROR app.worker -   File "/srv/app/services/user.py", line 2, in get_profile
+2026-11-05 10:00:01,123 ERROR app.worker -     return {"name": user["name"], "email": user["email"]}
+2026-11-05 10:00:01,123 ERROR app.worker -                                            ~~~~^^^^^^^^^
+2026-11-05 10:00:01,123 ERROR app.worker - KeyError: 'email'

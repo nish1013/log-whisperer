@@ -1,0 +1,11 @@
+Traceback (most recent call last):
+  File "/srv/run.py", line 75, in <module>
+    SCENARIOS[sys.argv[1]]()
+    ~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/srv/run.py", line 16, in <lambda>
+    "F02": lambda: get_order_owner(42),
+                   ~~~~~~~~~~~~~~~^^^^
+  File "/srv/app/api/orders.py", line 13, in get_order_owner
+    return {"order": order.order_id, "owner": order.customer.id}
+                                              ^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'id'

@@ -1,0 +1,13 @@
+Traceback (most recent call last):
+  File "/srv/run.py", line 75, in <module>
+    SCENARIOS[sys.argv[1]]()
+  File "/srv/run.py", line 20, in <lambda>
+    "F06": lambda: walk_tree(0),
+  File "/srv/app/worker.py", line 5, in walk_tree
+    return walk_tree(node + 1)
+  File "/srv/app/worker.py", line 5, in walk_tree
+    return walk_tree(node + 1)
+  File "/srv/app/worker.py", line 5, in walk_tree
+    return walk_tree(node + 1)
+  [Previous line repeated 995 more times]
+RecursionError: maximum recursion depth exceeded

@@ -1,0 +1,869 @@
+{
+  "F01": {
+    "fix_keywords": [
+      ".get(",
+      " in ",
+      "KeyError"
+    ],
+    "versions": {
+      "3.10": {
+        "culprit": {
+          "file": "/srv/app/services/user.py",
+          "func": "get_profile",
+          "line": 2
+        },
+        "exceptions": [
+          {
+            "chain_reason": null,
+            "message": "'email'",
+            "type": "KeyError"
+          }
+        ],
+        "root_cause_index": 0
+      },
+      "3.11": {
+        "culprit": {
+          "file": "/srv/app/services/user.py",
+          "func": "get_profile",
+          "line": 2
+        },
+        "exceptions": [
+          {
+            "chain_reason": null,
+            "message": "'email'",
+            "type": "KeyError"
+          }
+        ],
+        "root_cause_index": 0
+      },
+      "3.12": {
+        "culprit": {
+          "file": "/srv/app/services/user.py",
+          "func": "get_profile",
+          "line": 2
+        },
+        "exceptions": [
+          {
+            "chain_reason": null,
+            "message": "'email'",
+            "type": "KeyError"
+          }
+        ],
+        "root_cause_index": 0
+      },
+      "3.13": {
+        "culprit": {
+          "file": "/srv/app/services/user.py",
+          "func": "get_profile",
+          "line": 2
+        },
+        "exceptions": [
+          {
+            "chain_reason": null,
+            "message": "'email'",
+            "type": "KeyError"
+          }
+        ],
+        "root_cause_index": 0
+      }
+    }
+  },
+  "F02": {
+    "fix_keywords": [
+      "None",
+      "is not None",
+      "Optional"
+    ],
+    "versions": {
+      "3.10": {
+        "culprit": {
+          "file": "/srv/app/api/orders.py",
+          "func": "get_order_owner",
+          "line": 13
+        },
+        "exceptions": [
+          {
+            "chain_reason": null,
+            "message": "'NoneType' object has no attribute 'id'",
+            "type": "AttributeError"
+          }
+        ],
+        "root_cause_index": 0
+      },
+      "3.11": {
+        "culprit": {
+          "file": "/srv/app/api/orders.py",
+          "func": "get_order_owner",
+          "line": 13
+        },
+        "exceptions": [
+          {
+            "chain_reason": null,
+            "message": "'NoneType' object has no attribute 'id'",
+            "type": "AttributeError"
+          }
+        ],
+        "root_cause_index": 0
+      },
+      "3.12": {
+        "culprit": {
+          "file": "/srv/app/api/orders.py",
+          "func": "get_order_owner",
+          "line": 13
+        },
+        "exceptions": [
+          {
+            "chain_reason": null,
+            "message": "'NoneType' object has no attribute 'id'",
+            "type": "AttributeError"
+          }
+        ],
+        "root_cause_index": 0
+      },
+      "3.13": {
+        "culprit": {
+          "file": "/srv/app/api/orders.py",
+          "func": "get_order_owner",
+          "line": 13
+        },
+        "exceptions": [
+          {
+            "chain_reason": null,
+            "message": "'NoneType' object has no attribute 'id'",
+            "type": "AttributeError"
+          }
+        ],
+        "root_cause_index": 0
+      }
+    }
+  },
+  "F03": {
+    "fix_keywords": [
+      "pip install",
+      "requirements"
+    ],
+    "versions": {
+      "3.10": {
+        "culprit": {
+          "file": "/srv/app/clients/http.py",
+          "func": "load_retry_policy",
+          "line": 9
+        },
+        "exceptions": [
+          {
+            "chain_reason": null,
+            "message": "No module named 'backoff'",
+            "type": "ModuleNotFoundError"
+          }
+        ],
+        "root_cause_index": 0
+      },
+      "3.11": {
+        "culprit": {
+          "file": "/srv/app/clients/http.py",
+          "func": "load_retry_policy",
+          "line": 9
+        },
+        "exceptions": [
+          {
+            "chain_reason": null,
+            "message": "No module named 'backoff'",
+            "type": "ModuleNotFoundError"
+          }
+        ],
+        "root_cause_index": 0
+      },
+      "3.12": {
+        "culprit": {
+          "file": "/srv/app/clients/http.py",
+          "func": "load_retry_policy",
+          "line": 9
+        },
+        "exceptions": [
+          {
+            "chain_reason": null,
+            "message": "No module named 'backoff'",
+            "type": "ModuleNotFoundError"
+          }
+        ],
+        "root_cause_index": 0
+      },
+      "3.13": {
+        "culprit": {
+          "file": "/srv/app/clients/http.py",
+          "func": "load_retry_policy",
+          "line": 9
+        },
+        "exceptions": [
+          {
+            "chain_reason": null,
+            "message": "No module named 'backoff'",
+            "type": "ModuleNotFoundError"
+          }
+        ],
+        "root_cause_index": 0
+      }
+    }
+  },
+  "F04": {
+    "fix_keywords": [
+      "retry",
+      "timeout",
+      "connection",
+      "reachable"
+    ],
+    "versions": {
+      "3.10": {
+        "culprit": {
+          "file": "/srv/app/clients/http.py",
+          "func": "fetch_status",
+          "line": 16
+        },
+        "exceptions": [
+          {
+            "chain_reason": null,
+            "message": "[Errno 111] Connection refused",
+            "type": "ConnectionRefusedError"
+          },
+          {
+            "chain_reason": "cause",
+            "message": "HTTPConnection(host='localhost', port=1): Failed to establish a new connection: [Errno 111] Connection refused",
+            "type": "urllib3.exceptions.NewConnectionError"
+          },
+          {
+            "chain_reason": "cause",
+            "message": "HTTPConnectionPool(host='localhost', port=1): Max retries exceeded with url: /status (Caused by NewConnectionError(\"HTTPConnection(host='localhost', port=1): Failed to establish a new connection: [Errno 111] Connection refused\"))",
+            "type": "urllib3.exceptions.MaxRetryError"
+          },
+          {
+            "chain_reason": "context",
+            "message": "HTTPConnectionPool(host='localhost', port=1): Max retries exceeded with url: /status (Caused by NewConnectionError(\"HTTPConnection(host='localhost', port=1): Failed to establish a new connection: [Errno 111] Connection refused\"))",
+            "type": "requests.exceptions.ConnectionError"
+          },
+          {
+            "chain_reason": "cause",
+            "message": "status service is unreachable",
+            "type": "app.errors.UpstreamUnavailable"
+          }
+        ],
+        "root_cause_index": 0
+      },
+      "3.11": {
+        "culprit": {
+          "file": "/srv/app/clients/http.py",
+          "func": "fetch_status",
+          "line": 16
+        },
+        "exceptions": [
+          {
+            "chain_reason": null,
+            "message": "[Errno 111] Connection refused",
+            "type": "ConnectionRefusedError"
+          },
+          {
+            "chain_reason": "cause",
+            "message": "HTTPConnection(host='localhost', port=1): Failed to establish a new connection: [Errno 111] Connection refused",
+            "type": "urllib3.exceptions.NewConnectionError"
+          },
+          {
+            "chain_reason": "cause",
+            "message": "HTTPConnectionPool(host='localhost', port=1): Max retries exceeded with url: /status (Caused by NewConnectionError(\"HTTPConnection(host='localhost', port=1): Failed to establish a new connection: [Errno 111] Connection refused\"))",
+            "type": "urllib3.exceptions.MaxRetryError"
+          },
+          {
+            "chain_reason": "context",
+            "message": "HTTPConnectionPool(host='localhost', port=1): Max retries exceeded with url: /status (Caused by NewConnectionError(\"HTTPConnection(host='localhost', port=1): Failed to establish a new connection: [Errno 111] Connection refused\"))",
+            "type": "requests.exceptions.ConnectionError"
+          },
+          {
+            "chain_reason": "cause",
+            "message": "status service is unreachable",
+            "type": "app.errors.UpstreamUnavailable"
+          }
+        ],
+        "root_cause_index": 0
+      },
+      "3.12": {
+        "culprit": {
+          "file": "/srv/app/clients/http.py",
+          "func": "fetch_status",
+          "line": 16
+        },
+        "exceptions": [
+          {
+            "chain_reason": null,
+            "message": "[Errno 111] Connection refused",
+            "type": "ConnectionRefusedError"
+          },
+          {
+            "chain_reason": "cause",
+            "message": "HTTPConnection(host='localhost', port=1): Failed to establish a new connection: [Errno 111] Connection refused",
+            "type": "urllib3.exceptions.NewConnectionError"
+          },
+          {
+            "chain_reason": "cause",
+            "message": "HTTPConnectionPool(host='localhost', port=1): Max retries exceeded with url: /status (Caused by NewConnectionError(\"HTTPConnection(host='localhost', port=1): Failed to establish a new connection: [Errno 111] Connection refused\"))",
+            "type": "urllib3.exceptions.MaxRetryError"
+          },
+          {
+            "chain_reason": "context",
+            "message": "HTTPConnectionPool(host='localhost', port=1): Max retries exceeded with url: /status (Caused by NewConnectionError(\"HTTPConnection(host='localhost', port=1): Failed to establish a new connection: [Errno 111] Connection refused\"))",
+            "type": "requests.exceptions.ConnectionError"
+          },
+          {
+            "chain_reason": "cause",
+            "message": "status service is unreachable",
+            "type": "app.errors.UpstreamUnavailable"
+          }
+        ],
+        "root_cause_index": 0
+      },
+      "3.13": {
+        "culprit": {
+          "file": "/srv/app/clients/http.py",
+          "func": "fetch_status",
+          "line": 16
+        },
+        "exceptions": [
+          {
+            "chain_reason": null,
+            "message": "[Errno 111] Connection refused",
+            "type": "ConnectionRefusedError"
+          },
+          {
+            "chain_reason": "cause",
+            "message": "HTTPConnection(host='localhost', port=1): Failed to establish a new connection: [Errno 111] Connection refused",
+            "type": "urllib3.exceptions.NewConnectionError"
+          },
+          {
+            "chain_reason": "cause",
+            "message": "HTTPConnectionPool(host='localhost', port=1): Max retries exceeded with url: /status (Caused by NewConnectionError(\"HTTPConnection(host='localhost', port=1): Failed to establish a new connection: [Errno 111] Connection refused\"))",
+            "type": "urllib3.exceptions.MaxRetryError"
+          },
+          {
+            "chain_reason": "context",
+            "message": "HTTPConnectionPool(host='localhost', port=1): Max retries exceeded with url: /status (Caused by NewConnectionError(\"HTTPConnection(host='localhost', port=1): Failed to establish a new connection: [Errno 111] Connection refused\"))",
+            "type": "requests.exceptions.ConnectionError"
+          },
+          {
+            "chain_reason": "cause",
+            "message": "status service is unreachable",
+            "type": "app.errors.UpstreamUnavailable"
+          }
+        ],
+        "root_cause_index": 0
+      }
+    }
+  },
+  "F05": {
+    "fix_keywords": [
+      "retry",
+      "timeout",
+      "connection",
+      "reachable"
+    ],
+    "versions": {
+      "3.10": {
+        "culprit": {
+          "file": "/srv/app/clients/http.py",
+          "func": "fetch_status_unchained",
+          "line": 23
+        },
+        "exceptions": [
+          {
+            "chain_reason": null,
+            "message": "[Errno 111] Connection refused",
+            "type": "ConnectionRefusedError"
+          },
+          {
+            "chain_reason": "cause",
+            "message": "HTTPConnection(host='localhost', port=1): Failed to establish a new connection: [Errno 111] Connection refused",
+            "type": "urllib3.exceptions.NewConnectionError"
+          },
+          {
+            "chain_reason": "cause",
+            "message": "HTTPConnectionPool(host='localhost', port=1): Max retries exceeded with url: /status (Caused by NewConnectionError(\"HTTPConnection(host='localhost', port=1): Failed to establish a new connection: [Errno 111] Connection refused\"))",
+            "type": "urllib3.exceptions.MaxRetryError"
+          },
+          {
+            "chain_reason": "context",
+            "message": "HTTPConnectionPool(host='localhost', port=1): Max retries exceeded with url: /status (Caused by NewConnectionError(\"HTTPConnection(host='localhost', port=1): Failed to establish a new connection: [Errno 111] Connection refused\"))",
+            "type": "requests.exceptions.ConnectionError"
+          },
+          {
+            "chain_reason": "context",
+            "message": "status service is unreachable",
+            "type": "app.errors.UpstreamUnavailable"
+          }
+        ],
+        "root_cause_index": 0
+      },
+      "3.11": {
+        "culprit": {
+          "file": "/srv/app/clients/http.py",
+          "func": "fetch_status_unchained",
+          "line": 23
+        },
+        "exceptions": [
+          {
+            "chain_reason": null,
+            "message": "[Errno 111] Connection refused",
+            "type": "ConnectionRefusedError"
+          },
+          {
+            "chain_reason": "cause",
+            "message": "HTTPConnection(host='localhost', port=1): Failed to establish a new connection: [Errno 111] Connection refused",
+            "type": "urllib3.exceptions.NewConnectionError"
+          },
+          {
+            "chain_reason": "cause",
+            "message": "HTTPConnectionPool(host='localhost', port=1): Max retries exceeded with url: /status (Caused by NewConnectionError(\"HTTPConnection(host='localhost', port=1): Failed to establish a new connection: [Errno 111] Connection refused\"))",
+            "type": "urllib3.exceptions.MaxRetryError"
+          },
+          {
+            "chain_reason": "context",
+            "message": "HTTPConnectionPool(host='localhost', port=1): Max retries exceeded with url: /status (Caused by NewConnectionError(\"HTTPConnection(host='localhost', port=1): Failed to establish a new connection: [Errno 111] Connection refused\"))",
+            "type": "requests.exceptions.ConnectionError"
+          },
+          {
+            "chain_reason": "context",
+            "message": "status service is unreachable",
+            "type": "app.errors.UpstreamUnavailable"
+          }
+        ],
+        "root_cause_index": 0
+      },
+      "3.12": {
+        "culprit": {
+          "file": "/srv/app/clients/http.py",
+          "func": "fetch_status_unchained",
+          "line": 23
+        },
+        "exceptions": [
+          {
+            "chain_reason": null,
+            "message": "[Errno 111] Connection refused",
+            "type": "ConnectionRefusedError"
+          },
+          {
+            "chain_reason": "cause",
+            "message": "HTTPConnection(host='localhost', port=1): Failed to establish a new connection: [Errno 111] Connection refused",
+            "type": "urllib3.exceptions.NewConnectionError"
+          },
+          {
+            "chain_reason": "cause",
+            "message": "HTTPConnectionPool(host='localhost', port=1): Max retries exceeded with url: /status (Caused by NewConnectionError(\"HTTPConnection(host='localhost', port=1): Failed to establish a new connection: [Errno 111] Connection refused\"))",
+            "type": "urllib3.exceptions.MaxRetryError"
+          },
+          {
+            "chain_reason": "context",
+            "message": "HTTPConnectionPool(host='localhost', port=1): Max retries exceeded with url: /status (Caused by NewConnectionError(\"HTTPConnection(host='localhost', port=1): Failed to establish a new connection: [Errno 111] Connection refused\"))",
+            "type": "requests.exceptions.ConnectionError"
+          },
+          {
+            "chain_reason": "context",
+            "message": "status service is unreachable",
+            "type": "app.errors.UpstreamUnavailable"
+          }
+        ],
+        "root_cause_index": 0
+      },
+      "3.13": {
+        "culprit": {
+          "file": "/srv/app/clients/http.py",
+          "func": "fetch_status_unchained",
+          "line": 23
+        },
+        "exceptions": [
+          {
+            "chain_reason": null,
+            "message": "[Errno 111] Connection refused",
+            "type": "ConnectionRefusedError"
+          },
+          {
+            "chain_reason": "cause",
+            "message": "HTTPConnection(host='localhost', port=1): Failed to establish a new connection: [Errno 111] Connection refused",
+            "type": "urllib3.exceptions.NewConnectionError"
+          },
+          {
+            "chain_reason": "cause",
+            "message": "HTTPConnectionPool(host='localhost', port=1): Max retries exceeded with url: /status (Caused by NewConnectionError(\"HTTPConnection(host='localhost', port=1): Failed to establish a new connection: [Errno 111] Connection refused\"))",
+            "type": "urllib3.exceptions.MaxRetryError"
+          },
+          {
+            "chain_reason": "context",
+            "message": "HTTPConnectionPool(host='localhost', port=1): Max retries exceeded with url: /status (Caused by NewConnectionError(\"HTTPConnection(host='localhost', port=1): Failed to establish a new connection: [Errno 111] Connection refused\"))",
+            "type": "requests.exceptions.ConnectionError"
+          },
+          {
+            "chain_reason": "context",
+            "message": "status service is unreachable",
+            "type": "app.errors.UpstreamUnavailable"
+          }
+        ],
+        "root_cause_index": 0
+      }
+    }
+  },
+  "F06": {
+    "fix_keywords": [
+      "recursion",
+      "base case",
+      "iterative"
+    ],
+    "versions": {
+      "3.10": {
+        "culprit": {
+          "file": "/srv/app/worker.py",
+          "func": "walk_tree",
+          "line": 5
+        },
+        "exceptions": [
+          {
+            "chain_reason": null,
+            "message": "maximum recursion depth exceeded",
+            "type": "RecursionError"
+          }
+        ],
+        "root_cause_index": 0
+      },
+      "3.11": {
+        "culprit": {
+          "file": "/srv/app/worker.py",
+          "func": "walk_tree",
+          "line": 5
+        },
+        "exceptions": [
+          {
+            "chain_reason": null,
+            "message": "maximum recursion depth exceeded",
+            "type": "RecursionError"
+          }
+        ],
+        "root_cause_index": 0
+      },
+      "3.12": {
+        "culprit": {
+          "file": "/srv/app/worker.py",
+          "func": "walk_tree",
+          "line": 5
+        },
+        "exceptions": [
+          {
+            "chain_reason": null,
+            "message": "maximum recursion depth exceeded",
+            "type": "RecursionError"
+          }
+        ],
+        "root_cause_index": 0
+      },
+      "3.13": {
+        "culprit": {
+          "file": "/srv/app/worker.py",
+          "func": "walk_tree",
+          "line": 5
+        },
+        "exceptions": [
+          {
+            "chain_reason": null,
+            "message": "maximum recursion depth exceeded",
+            "type": "RecursionError"
+          }
+        ],
+        "root_cause_index": 0
+      }
+    }
+  },
+  "F07": {
+    "fix_keywords": [
+      "unique",
+      "duplicate",
+      "upsert"
+    ],
+    "versions": {
+      "3.10": {
+        "culprit": {
+          "file": "/srv/app/db/repo.py",
+          "func": "create_user",
+          "line": 13
+        },
+        "exceptions": [
+          {
+            "chain_reason": null,
+            "message": "UNIQUE constraint failed: users.username",
+            "type": "sqlite3.IntegrityError"
+          },
+          {
+            "chain_reason": "cause",
+            "message": "(sqlite3.IntegrityError) UNIQUE constraint failed: users.username\n[SQL: INSERT INTO users (username) VALUES (?)]\n[parameters: ('ana',)]\n(Background on this error at: https://sqlalche.me/e/20/gkpj)",
+            "type": "sqlalchemy.exc.IntegrityError"
+          }
+        ],
+        "root_cause_index": 0
+      },
+      "3.11": {
+        "culprit": {
+          "file": "/srv/app/db/repo.py",
+          "func": "create_user",
+          "line": 13
+        },
+        "exceptions": [
+          {
+            "chain_reason": null,
+            "message": "UNIQUE constraint failed: users.username",
+            "type": "sqlite3.IntegrityError"
+          },
+          {
+            "chain_reason": "cause",
+            "message": "(sqlite3.IntegrityError) UNIQUE constraint failed: users.username\n[SQL: INSERT INTO users (username) VALUES (?)]\n[parameters: ('ana',)]\n(Background on this error at: https://sqlalche.me/e/20/gkpj)",
+            "type": "sqlalchemy.exc.IntegrityError"
+          }
+        ],
+        "root_cause_index": 0
+      },
+      "3.12": {
+        "culprit": {
+          "file": "/srv/app/db/repo.py",
+          "func": "create_user",
+          "line": 13
+        },
+        "exceptions": [
+          {
+            "chain_reason": null,
+            "message": "UNIQUE constraint failed: users.username",
+            "type": "sqlite3.IntegrityError"
+          },
+          {
+            "chain_reason": "cause",
+            "message": "(sqlite3.IntegrityError) UNIQUE constraint failed: users.username\n[SQL: INSERT INTO users (username) VALUES (?)]\n[parameters: ('ana',)]\n(Background on this error at: https://sqlalche.me/e/20/gkpj)",
+            "type": "sqlalchemy.exc.IntegrityError"
+          }
+        ],
+        "root_cause_index": 0
+      },
+      "3.13": {
+        "culprit": {
+          "file": "/srv/app/db/repo.py",
+          "func": "create_user",
+          "line": 13
+        },
+        "exceptions": [
+          {
+            "chain_reason": null,
+            "message": "UNIQUE constraint failed: users.username",
+            "type": "sqlite3.IntegrityError"
+          },
+          {
+            "chain_reason": "cause",
+            "message": "(sqlite3.IntegrityError) UNIQUE constraint failed: users.username\n[SQL: INSERT INTO users (username) VALUES (?)]\n[parameters: ('ana',)]\n(Background on this error at: https://sqlalche.me/e/20/gkpj)",
+            "type": "sqlalchemy.exc.IntegrityError"
+          }
+        ],
+        "root_cause_index": 0
+      }
+    }
+  },
+  "F08": {
+    "fix_keywords": [
+      ".get(",
+      " in ",
+      "KeyError"
+    ],
+    "versions": {
+      "3.10": {
+        "culprit": {
+          "file": "/srv/app/services/user.py",
+          "func": "get_profile",
+          "line": 2
+        },
+        "exceptions": [
+          {
+            "chain_reason": null,
+            "message": "'email'",
+            "type": "KeyError"
+          }
+        ],
+        "root_cause_index": 0
+      },
+      "3.11": {
+        "culprit": {
+          "file": "/srv/app/services/user.py",
+          "func": "get_profile",
+          "line": 2
+        },
+        "exceptions": [
+          {
+            "chain_reason": null,
+            "message": "'email'",
+            "type": "KeyError"
+          }
+        ],
+        "root_cause_index": 0
+      },
+      "3.12": {
+        "culprit": {
+          "file": "/srv/app/services/user.py",
+          "func": "get_profile",
+          "line": 2
+        },
+        "exceptions": [
+          {
+            "chain_reason": null,
+            "message": "'email'",
+            "type": "KeyError"
+          }
+        ],
+        "root_cause_index": 0
+      },
+      "3.13": {
+        "culprit": {
+          "file": "/srv/app/services/user.py",
+          "func": "get_profile",
+          "line": 2
+        },
+        "exceptions": [
+          {
+            "chain_reason": null,
+            "message": "'email'",
+            "type": "KeyError"
+          }
+        ],
+        "root_cause_index": 0
+      }
+    }
+  },
+  "F09": {
+    "fix_keywords": [
+      "timeout",
+      "wait_for",
+      "cancel"
+    ],
+    "versions": {
+      "3.10": {
+        "culprit": {
+          "file": "/srv/app/worker.py",
+          "func": "fetch_report",
+          "line": 9
+        },
+        "exceptions": [
+          {
+            "chain_reason": null,
+            "message": "",
+            "type": "asyncio.exceptions.CancelledError"
+          },
+          {
+            "chain_reason": "context",
+            "message": "",
+            "type": "asyncio.exceptions.CancelledError"
+          },
+          {
+            "chain_reason": "cause",
+            "message": "",
+            "type": "asyncio.exceptions.TimeoutError"
+          }
+        ],
+        "root_cause_index": 0
+      },
+      "3.11": {
+        "culprit": {
+          "file": "/srv/app/worker.py",
+          "func": "fetch_report",
+          "line": 9
+        },
+        "exceptions": [
+          {
+            "chain_reason": null,
+            "message": "",
+            "type": "asyncio.exceptions.CancelledError"
+          },
+          {
+            "chain_reason": "cause",
+            "message": "",
+            "type": "TimeoutError"
+          }
+        ],
+        "root_cause_index": 0
+      },
+      "3.12": {
+        "culprit": {
+          "file": "/srv/app/worker.py",
+          "func": "fetch_report",
+          "line": 9
+        },
+        "exceptions": [
+          {
+            "chain_reason": null,
+            "message": "",
+            "type": "asyncio.exceptions.CancelledError"
+          },
+          {
+            "chain_reason": "cause",
+            "message": "",
+            "type": "TimeoutError"
+          }
+        ],
+        "root_cause_index": 0
+      },
+      "3.13": {
+        "culprit": {
+          "file": "/srv/app/worker.py",
+          "func": "fetch_report",
+          "line": 9
+        },
+        "exceptions": [
+          {
+            "chain_reason": null,
+            "message": "",
+            "type": "asyncio.exceptions.CancelledError"
+          },
+          {
+            "chain_reason": "cause",
+            "message": "",
+            "type": "TimeoutError"
+          }
+        ],
+        "root_cause_index": 0
+      }
+    }
+  },
+  "F10": {
+    "culprit": null,
+    "kind": "generic_log",
+    "log_levels": {
+      "ERROR": 3
+    }
+  },
+  "F11": {
+    "redaction_count": 5,
+    "secret_parts": [
+      [
+        "AKIA",
+        "FAKEFAKE",
+        "EXAMPLE0"
+      ],
+      [
+        "eyJhbGciOiJIUzI1NiJ9",
+        ".eyJzdWIiOiJmYWtlLXVzZXIifQ",
+        ".ZmFrZS1zaWduYXR1cmUtdmFsdWU"
+      ],
+      [
+        "sk-",
+        "test_",
+        "FAKEonlyFORtestsNOTreal00"
+      ],
+      [
+        "user",
+        ":",
+        "hunter2-fake"
+      ],
+      [
+        "ana.fake",
+        "@",
+        "example.org"
+      ]
+    ]
+  },
+  "F12": {
+    "kind": "unknown"
+  }
+}
