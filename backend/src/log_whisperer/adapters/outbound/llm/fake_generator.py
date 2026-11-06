@@ -57,8 +57,9 @@ class FakeDiagnosisGenerator:
 
 def _no_traceback(parsed: ParsedLog) -> Diagnosis:
     errors = parsed.log_levels.get("ERROR", 0)
+    noun = "line" if errors == 1 else "lines"
     summary = (
-        f"No Python traceback found; {errors} ERROR lines."
+        f"No Python traceback found; {errors} ERROR {noun}."
         if errors
         else ("No Python traceback found.")
     )
